@@ -19,7 +19,14 @@ from sumy.summarizers.text_rank import TextRankSummarizer
 from chatbot import get_featherless_response as get_sec_bot_response
 
 # — Load spaCy model —
-nlp = spacy.load("en_core_web_sm")
+import spacy.cli
+
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    spacy.cli.download("en_core_web_sm")
+    nlp = spacy.load("en_core_web_sm")
+
 
 def parse_eml(uploaded_file):
     return BytesParser(policy=policy.default).parse(uploaded_file)
