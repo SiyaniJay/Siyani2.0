@@ -21,7 +21,7 @@ from chatbot import get_featherless_response as get_sec_bot_response
 # — Load spaCy model —
 import spacy
 
-nlp = spacy.load("en_core_web_dm")
+nlp = spacy.load("en_core_web_md")
 
 def parse_eml(uploaded_file):
     return BytesParser(policy=policy.default).parse(uploaded_file)
